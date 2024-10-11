@@ -55,7 +55,7 @@ En caso de probar la aplicacion bajo el entorno local con el servidor configurar
 
 ## 📲Demo
 
-En el siguiente [enlace](https://drive.google.com/file/d/1pTDhqHw0T8KAHOBTwGd8DvKZU8u1bsvN/view?usp=sharing) podrás descargar y probar la aplicación en un dispositivo Android.
+En el siguiente [enlace](https://drive.google.com/file/d/1vPVpsHNjobGzcoy6uB1ODxzqEl5BySEW/view?usp=drive_link) podrás descargar y probar la aplicación en un dispositivo Android.
 > **Nota:** Para instalar la aplicacion es recomendable activar la configuracion que permita la instalacion de aplicaciones de una fuente desonocida
 
 ⚙️Desarrollado por [_Nicolas Pereira_](https://nicolaspereira.cl)
