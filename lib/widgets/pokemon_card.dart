@@ -2,6 +2,7 @@ import 'dart:developer' as dev;
 
 import 'package:controlcar_app_test/controllers/pokemon_controller.dart';
 import 'package:controlcar_app_test/utils/colors.dart';
+import 'package:controlcar_app_test/utils/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +12,7 @@ class PokemonCard extends StatefulWidget {
   final String image;
   final bool captured;
   final bool showCaptured;
+  final int totalCaptured;
 
   const PokemonCard({
     super.key,
@@ -19,6 +21,7 @@ class PokemonCard extends StatefulWidget {
     required this.image,
     required this.captured,
     this.showCaptured = false,
+    required this.totalCaptured,
   });
 
   @override
@@ -41,9 +44,11 @@ class _PokemonCardState extends State<PokemonCard> {
       children: [
         GestureDetector(
           onTap: () {
+            dev.log(pokemonController.capturedPokemons.length.toString());
+
+            Toast.show(message: 'Capturando pokemon...', duration: 4);
             pokemonController.capturePokemon(widget.id);
             pokemonController.fetchPokemons();
-            pokemonController.fetchCapturedPokemons();
           },
           onDoubleTap: () {
             dev.log('Double tap pokemon captured: ${widget.captured}');

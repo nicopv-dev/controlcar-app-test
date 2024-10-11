@@ -21,7 +21,7 @@ class SearchFilterButton extends StatelessWidget {
           decoration: BoxDecoration(
             color: selected
                 ? Constants.primaryColor
-                : Colors.grey.withOpacity(0.3),
+                : Colors.grey.withOpacity(0.5),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(

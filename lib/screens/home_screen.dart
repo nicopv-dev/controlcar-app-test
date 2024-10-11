@@ -1,9 +1,11 @@
 import 'package:controlcar_app_test/app/app_routes.dart';
 import 'package:controlcar_app_test/controllers/pokemon_controller.dart';
 import 'package:controlcar_app_test/widgets/pokemon_card.dart';
+import 'package:controlcar_app_test/widgets/pokemon_skeleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -20,7 +22,11 @@ class HomeScreen extends StatelessWidget {
       child: SafeArea(
         child: GetX<PokemonController>(builder: (controller) {
           return RefreshIndicator(
-            onRefresh: controller.fetchPokemons,
+            onRefresh: () {
+              controller.setIsLoadingPokemons(true);
+              controller.fetchPokemons();
+              return Future.value();
+            },
             child: Scaffold(
               floatingActionButtonAnimator:
                   FloatingActionButtonAnimator.scaling,
@@ -56,35 +62,52 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        IconButton(
-                            onPressed: () => Get.toNamed(AppRoutes.search),
-                            icon: const Icon(Icons.search))
                       ],
                     ),
                     const SizedBox(height: 20),
-                    GridView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 3 / 2,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                      ),
-                      itemCount: controller.pokemons.length,
-                      itemBuilder: (context, index) {
-                        final pokemon = controller.pokemons[index];
+                    controller.isLoadingPokemons.value
+                        ? Skeletonizer(
+                            enabled: true,
+                            child: GridView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio: 3 / 2,
+                                crossAxisSpacing: 10,
+                                mainAxisSpacing: 10,
+                              ),
+                              itemCount: 12,
+                              itemBuilder: (context, index) =>
+                                  const PokemonSkeleton(),
+                            ),
+                          )
+                        : GridView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              childAspectRatio: 3 / 2,
+                              crossAxisSpacing: 10,
+                              mainAxisSpacing: 10,
+                            ),
+                            itemCount: controller.pokemons.length,
+                            itemBuilder: (context, index) {
+                              final pokemon = controller.pokemons[index];
 
-                        return PokemonCard(
-                          id: pokemon.id,
-                          name: pokemon.name,
-                          image: pokemon.image,
-                          captured: pokemon.captured,
-                          showCaptured: true,
-                        );
-                      },
-                    ),
+                              return PokemonCard(
+                                id: pokemon.id,
+                                name: pokemon.name,
+                                image: pokemon.image,
+                                captured: pokemon.captured,
+                                showCaptured: true,
+                                totalCaptured:
+                                    controller.capturedPokemons.length,
+                              );
+                            },
+                          ),
                   ],
                 ),
               ),

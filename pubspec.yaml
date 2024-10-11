@@ -4,7 +4,8 @@ publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: ^3.5.3
+  # sdk: ^3.5.3
+  sdk: ">=3.4.4 <4.0.0"
 
 dependencies:
   flutter:
@@ -14,6 +15,7 @@ dependencies:
   google_fonts: ^6.2.1
   http: ^1.2.2
   skeletonizer: ^1.4.2
+  toastification: ^2.3.0
 
 dev_dependencies:
   flutter_test:

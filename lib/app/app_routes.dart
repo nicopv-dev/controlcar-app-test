@@ -1,5 +1,4 @@
 import 'package:controlcar_app_test/screens/captured_screen.dart';
-import 'package:controlcar_app_test/screens/home_screen.dart';
 import 'package:controlcar_app_test/screens/search_screen.dart';
 import 'package:controlcar_app_test/screens/splash_screen.dart';
 import 'package:get/get.dart';
@@ -12,8 +11,7 @@ class AppRoutes {
 
   static final pages = [
     GetPage(name: splash, page: () => const SplashScreen()),
-    GetPage(name: home, page: () => const HomeScreen()),
-    GetPage(name: search, page: () => const SearchScreen()),
+    GetPage(name: home, page: () => const SearchScreen()),
     GetPage(name: captured, page: () => const CapturedScreen())
   ];
 }

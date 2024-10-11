@@ -17,9 +17,10 @@ class PokemonService {
           },
           body: jsonEncode({'id': id}));
 
-  static Future<http.Response> searchPokemon(String name, String? type) async =>
-      await http.get(
-          Uri.parse('${Constants.API_URL}/pokemon/search?q=$name&type=$type'));
+  static Future<http.Response> searchPokemon(
+          int page, String name, String? type) async =>
+      await http.get(Uri.parse(
+          '${Constants.API_URL}/pokemon/search?page=$page&q=$name&type=$type'));
 
   static Future<http.Response> getFilterTypes() async =>
       await http.get(Uri.parse('${Constants.API_URL}/pokemon/types'));

@@ -40,4 +40,4 @@ Sigue estos pasos para clonar e instalar el proyecto en tu entorno local:
 
 En el siguiente [enlace](https://drive.google.com/file/d/1pTDhqHw0T8KAHOBTwGd8DvKZU8u1bsvN/view?usp=sharing) podrás descargar y probar la aplicación.
 
-Desarrollado por _Nicolas Pereira_
+⚙️Desarrollado por [_Nicolas Pereira_](https://nicolaspereira.cl)
