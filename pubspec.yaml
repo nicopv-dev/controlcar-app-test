@@ -9,6 +9,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.14.1
+  get: ^4.6.6
+  google_fonts: ^6.2.1
+  http: ^1.2.2
+  skeletonizer: ^1.4.2
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +22,15 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/icon.png"
+  min_sdk_version: 21
+  adaptive_icon_background: "#3DC8EB"
+  adaptive_icon_foreground: "assets/icons/icon_rounded.png"
