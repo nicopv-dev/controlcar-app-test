@@ -10,6 +10,7 @@ class PokemonCard extends StatefulWidget {
   final String name;
   final String image;
   final bool captured;
+  final bool showCaptured;
 
   const PokemonCard({
     super.key,
@@ -17,6 +18,7 @@ class PokemonCard extends StatefulWidget {
     required this.name,
     required this.image,
     required this.captured,
+    this.showCaptured = false,
   });
 
   @override
@@ -92,25 +94,28 @@ class _PokemonCardState extends State<PokemonCard> {
             ),
           ),
         ),
-        Positioned(
-          bottom: 15,
-          left: 10,
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            decoration: BoxDecoration(
-              color: widget.captured ? Colors.grey[200] : color.overlay,
-              borderRadius: BorderRadius.circular(50),
-            ),
-            child: Text(
-              widget.captured ? 'Capturado' : 'No capturado',
-              style: TextStyle(
-                color: widget.captured ? Colors.black : Colors.white,
-                fontSize: 10,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        ),
+        widget.showCaptured
+            ? Positioned(
+                bottom: 15,
+                left: 10,
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(
+                    color: widget.captured ? Colors.grey[200] : color.overlay,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: Text(
+                    widget.captured ? 'Capturado' : 'No capturado',
+                    style: TextStyle(
+                      color: widget.captured ? Colors.black : Colors.white,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              )
+            : const SizedBox.shrink(),
       ],
     );
   }

@@ -188,13 +188,17 @@ class _SearchScreenState extends State<SearchScreen> {
                   },
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20, top: 6),
-                child: Text(
-                  'Resultados: ${results.length}',
-                  style: const TextStyle(color: Colors.grey, fontSize: 14),
-                ),
-              ),
+              results.isNotEmpty
+                  ? Padding(
+                      padding:
+                          const EdgeInsets.only(left: 20, right: 20, top: 6),
+                      child: Text(
+                        'Resultados: ${results.length}',
+                        style:
+                            const TextStyle(color: Colors.grey, fontSize: 14),
+                      ),
+                    )
+                  : const SizedBox(),
               const SizedBox(
                 height: 6,
               ),

@@ -50,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                               width: 4,
                             ),
                             const Text(
-                              "Pokedex",
+                              "Controldex",
                               style: TextStyle(
                                   fontSize: 30, fontWeight: FontWeight.w600),
                             ),
@@ -81,6 +81,7 @@ class HomeScreen extends StatelessWidget {
                           name: pokemon.name,
                           image: pokemon.image,
                           captured: pokemon.captured,
+                          showCaptured: true,
                         );
                       },
                     ),
