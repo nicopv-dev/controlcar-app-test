@@ -39,8 +39,12 @@ Sigue estos pasos para clonar e instalar el proyecto en tu entorno local:
    git clone https://github.com/nicopv-dev/controlcar-app-test.git
    cd controlcar-app-test
    ```
+2. Instalar dependencias
+   ```sh
+   flutter pub get
+   ```
 
-2. Correr aplicación
+3. Correr aplicación
    ```sh
    flutter run
    ```
